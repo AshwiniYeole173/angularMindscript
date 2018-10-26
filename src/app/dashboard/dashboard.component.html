@@ -1,0 +1,46 @@
+<p>
+  WELCOME {{username | uppercase}}
+</p>
+<div *ngIf="showLoader">
+  <mat-spinner></mat-spinner>
+
+</div>
+
+<div>
+  <input type="text" placeholder="Search" [(ngModel)]="query" id="listSearch">
+</div>
+
+
+<!-- <div>
+<table border='1'>
+  <tr>
+    <td>Name</td>
+    <td>Id</td>
+    <td>Branch</td> 
+  </tr>  
+  <tr *ngFor="let hero of heroes  | LockFilter: query">
+    <td>{{ hero.name }}</td>
+     <td>{{hero.id}} </td>
+      <td>{{hero.branch}} </td>
+  </tr>
+  </table>
+<div> -->
+
+<div *ngIf='!showLoader'>
+  <table border='1'>
+    <tr>
+      <td>Id</td>
+      <td>Name</td>
+      <td>email</td>
+    </tr>
+    <tr *ngFor="let response of apiresponse  | LockFilter: 'name': query">
+      <td>{{response.id}} </td>
+      <td>{{ response.name }}</td>
+      <td>{{response.email}} </td>
+    </tr>
+  </table>
+  <mat-paginator [length]="10" [pageSize]="10" [pageSizeOptions]="[5, 10]">
+  </mat-paginator>
+  <div>
+
+    {{error}}

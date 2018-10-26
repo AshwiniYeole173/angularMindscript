@@ -1,0 +1,26 @@
+<form class="form-group" #loginForm="ngForm" novalidate autocomplete="off">
+  
+  <div class="form-group">
+    Name:<input type="text" placeholder="Enter your name here"name="username" [(ngModel)]="username" required #uname="ngModel" /><br><br>
+    <app-error [displayError]= "uname.invalid && uname.errors.required && (uname.dirty || uname.touch ||
+    loginForm.submitted)" errorMsg="Please Enter Username"> </app-error>
+  </div> <br>
+
+  <div>
+    id:<input type="password" placeholder="Enter your id" name="id" [(ngModel)]="password" required #iname="ngModel" minlength="6" maxlength="8" /><br><br>
+    <app-error [displayError]= "iname.invalid && iname.errors.required && (iname.dirty || iname.touch || loginForm.submitted)" errorMsg="Please Enter id"> </app-error>
+
+  </div> <br>
+
+  <div>
+    Branch:<input type="text" placeholder="Enter your Branch here">
+  </div> <br>
+
+  <div>
+     Address:<input type="text" placeholder="Enter your Address here">
+  </div> <br>
+
+  <!-- <a routerLink='/dashboard'>Go to the dashboard</a> -->
+  <button type="submit" (click)="routeToDashboard()">Submit</button>
+
+</form>
